@@ -29,7 +29,7 @@ wss.on('connection', function connection(ws) {
     }
     console.log('New Client Connected - Total Clients Connected: ', numClients)
 
-    db.run(`INSERT INTO visitors (count time)
+    db.run(`INSERT INTO visitors (count,time)
         VALUES (${numClients}, datetime('now'))`)
 
     wss.broadcast(`Current Connections: ${numClients}`);
