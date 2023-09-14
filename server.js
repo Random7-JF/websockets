@@ -13,7 +13,7 @@ expressServer.on('request', app);
 expressServer.listen(3000, function(){ console.log("server started on port 3000");})   
 
 process.on("SIGINT", () => {
-    server.close(() => {
+    expressServer.close(() => {
         shutdownDB();
     })
 })
