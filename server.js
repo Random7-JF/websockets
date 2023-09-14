@@ -13,6 +13,9 @@ expressServer.on('request', app);
 expressServer.listen(3000, function(){ console.log("server started on port 3000");})   
 
 process.on("SIGINT", () => {
+    wss.clients.forEach(function each(client){
+        client.close
+    })
     expressServer.close(() => {
         shutdownDB();
     })
