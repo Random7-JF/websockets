@@ -1,1 +1,18 @@
-<h2>Websockets!</h2>
+<html>
+    <head>
+        <title>WebSockets</title>
+    </head>
+    <body>
+        <h2>Websockets!</h2>
+    </body>
+    <script>
+        let ws;
+        const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
+
+        ws = new WebSocket(`${proto}://${window.location.host}`);
+        ws.onmessage = (event) => {
+            console.log(event.data)
+        };
+
+    </script>
+</html>
