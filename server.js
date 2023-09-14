@@ -18,14 +18,12 @@ const wss = new WebScoketServer({server: expressServer})
 
 wss.on('connection', function connection(ws) {
     const numClients = wss.clients.size
-    console.log('New Client Connected - Total Clients Connected: ', numClients)
-
-    wss.broadcast(`Current Connections: ${numClients}`);
-
     if (ws.readyState === ws.OPEN) {
         ws.send('Welcome to the server.');
     }
+    console.log('New Client Connected - Total Clients Connected: ', numClients)
 
+    wss.broadcast(`Current Connections: ${numClients}`);
     ws.on('close', function close(){
         wss.broadcast(`Current Connections: ${numClients}`);
         console.log("Client closed")
